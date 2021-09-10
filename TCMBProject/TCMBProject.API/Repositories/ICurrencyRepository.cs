@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TCMBProject.API.Data;
 using TCMBProject.API.Models.Dto;
 using TCMBProject.Currency.Models;
 
@@ -10,6 +11,7 @@ namespace TCMBProject.API.Repositories
     {
         Task<List<CurrencyModel>> GetAll();
         Task<List<CurrencyModel>> GetByCuurencyCode(string code);
-        Task Add();
+      
+        void Add(TCMBDbContext dbContext,List<CurrencyModel> currencies);
     }
 }

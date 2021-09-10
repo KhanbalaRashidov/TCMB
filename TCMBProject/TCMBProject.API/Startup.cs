@@ -12,7 +12,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TCMBProject.API.BgService;
 using TCMBProject.API.Data;
+using TCMBProject.API.Repositories;
+using TCMBProject.Currency.Services;
 
 namespace TCMBProject.API
 {
@@ -36,9 +39,12 @@ namespace TCMBProject.API
             });
             services.AddDbContext<TCMBDbContext>(opt =>
             {
-                opt.UseSqlServer(Configuration["TCMBConnection"]);
+                opt.UseSqlServer(Configuration.GetConnectionString("TCMBConnection"));
             });
-        }
+            services.AddHostedService<TCMBAddedService>();
+            services.AddSingleton<ICurrencyRepository, CurrencyRepository>();
+            services.AddSingleton<ICurrencyService, CurrencyService>();
+         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

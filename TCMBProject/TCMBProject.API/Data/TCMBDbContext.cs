@@ -9,10 +9,20 @@ namespace TCMBProject.API.Data
 {
     public class TCMBDbContext:DbContext
     {
+       
         public TCMBDbContext(DbContextOptions<TCMBDbContext> options):base(options)
         {
         }
-
+       
         public DbSet<CurrencyModel> Currencies { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CurrencyModel>()
+                .Property(f => f.Id)
+                .ValueGeneratedOnAdd();
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

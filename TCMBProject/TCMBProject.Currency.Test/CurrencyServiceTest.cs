@@ -12,15 +12,15 @@ namespace TCMBProject.Currency.Test
             currencyService = new CurrencyService();
         }
         [Fact]
-        public async void Get_Today()
+        public  void Get_Today()
         {
-            var result= await currencyService.GetToday();
+            var result=  currencyService.GetToday();
             Assert.True(result.Count > 0);
         }
         [Fact]
-        public async void Get_Currency_By_Date()
+        public  void Get_Currency_By_Date()
         {
-            var result = await currencyService.GetByDate(new DateTime(2021, 9, 7));
+            var result =  currencyService.GetByDate(new DateTime(2021, 9, 7));
             Assert.True(result.Count > 0);
         }
 

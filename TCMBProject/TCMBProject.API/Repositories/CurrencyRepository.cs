@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,38 +13,27 @@ namespace TCMBProject.API.Repositories
 {
     public class CurrencyRepository : ICurrencyRepository
     {
-        private ICurrencyService _currencyService;
+       
         private TCMBDbContext _dbContext;
 
-        public CurrencyRepository(ICurrencyService currencyService, TCMBDbContext dbContext)
+        public CurrencyRepository(IServiceProvider serviceProvider )
         {
-            _currencyService = currencyService;
-            _dbContext = dbContext;
+            
+            _dbContext = serviceProvider.CreateScope().ServiceProvider.GetRequiredService<TCMBDbContext>();
         }
 
-        public async Task Add()
+        public void Add(TCMBDbContext dbContext, List<CurrencyModel> currencies)
         {
-            var data=_currencyService.GetToday();
-            await _dbContext.AddRangeAsync(data);
-            await _dbContext.SaveChangesAsync();
-          
+            dbContext.Currencies.AddRange(currencies);
+            dbContext.SaveChanges();
         }
 
-        public async Task<List<CurrencyModel>> GetAll()
-        {
-            return  _dbContext.Set<CurrencyModel>().ToList();
-           
-        }
+        public  Task<List<CurrencyModel>>  GetAll() =>  _dbContext.Set<CurrencyModel>().ToListAsync();
 
-        public async Task<List<CurrencyModel>> GetByCuurencyCode(string code)
+        public  Task<List<CurrencyModel>> GetByCuurencyCode(string code)
         {
-            var data= _dbContext.Currencies.Where(x => x.CurrencyCode == code);
-            var currencyList=new List<CurrencyModel>();
-            foreach (var currency in data)
-            {
-                currencyList.Add(currency);
-            }
-            return currencyList;
+            var data =  _dbContext.Currencies.Where(x => x.CurrencyCode == code).ToListAsync();
+            return data;
         }
 
         
