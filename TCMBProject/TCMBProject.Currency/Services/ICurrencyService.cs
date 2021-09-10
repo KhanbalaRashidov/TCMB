@@ -9,7 +9,7 @@ namespace TCMBProject.Currency.Services
 {
     public interface ICurrencyService
     {
-        Task<CurrencyModel[]> GetToday();
-        Task<CurrencyModel[]> GetByDate(DateTime date);
+        Task<List<CurrencyModel>> GetToday();
+        Task<List<CurrencyModel>> GetByDate(DateTime date);
     }
 }

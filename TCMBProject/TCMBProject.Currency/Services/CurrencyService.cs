@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -22,23 +23,23 @@ namespace TCMBProject.Currency.Services
             };
             serailizer=new TCMBXmlSerializer();
         }
-        public Task<CurrencyModel[]> GetByDate(DateTime date)
+        public Task<List<CurrencyModel>> GetByDate(DateTime date)
         {
             var day=date.Day>0 &&date.Month<10? $"0{date.Day}":date.Day.ToString();
             var month=date.Month>0&&date.Month<10?$"0{date.Month}":date.Month.ToString();
             var url = new Uri(string.Format(urlPatter, $"{date.Year}{month}/{day}{month}{date.Year}"));
             var data=client.DownloadString(url);
             var deserializer = serailizer.Deserializer<Tarih_Date>(data);
-            var result = deserializer.Currency.Select(CurrencyModel.Map).ToArray();
+            var result = deserializer.Currency.Select(CurrencyModel.Map).ToList();
             return Task.FromResult(result);
         }
 
-        public Task<CurrencyModel[]> GetToday()
+        public Task<List<CurrencyModel>> GetToday()
         {
             var url = new Uri(string.Format(urlPatter, "today"));
             var data=client.DownloadString(url);
             var deserialize = serailizer.Deserializer<Tarih_Date>(data);
-            var result = deserialize.Currency.Select(CurrencyModel.Map).ToArray();
+            var result = deserialize.Currency.Select(CurrencyModel.Map).ToList();
             return Task.FromResult(result);
         }
     }

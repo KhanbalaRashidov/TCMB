@@ -15,13 +15,13 @@ namespace TCMBProject.Currency.Test
         public async void Get_Today()
         {
             var result= await currencyService.GetToday();
-            Assert.True(result.Length > 0);
+            Assert.True(result.Count > 0);
         }
         [Fact]
         public async void Get_Currency_By_Date()
         {
             var result = await currencyService.GetByDate(new DateTime(2021, 9, 7));
-            Assert.True(result.Length > 0);
+            Assert.True(result.Count > 0);
         }
 
     }

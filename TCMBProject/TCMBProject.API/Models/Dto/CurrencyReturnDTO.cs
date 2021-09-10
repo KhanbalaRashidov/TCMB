@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TCMBProject.API.Models.Dto
 {
-    public class CurrencyResponseDTO
+    public class CurrencyReturnDTO
     {
     }
 }
