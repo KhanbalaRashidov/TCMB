@@ -14,7 +14,7 @@ namespace TCMBProject.API.Data
         {
         }
        
-        public DbSet<CurrencyModel> Currencies { get; set; }
+        public DbSet<CurrencyModel> CurrencyModels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

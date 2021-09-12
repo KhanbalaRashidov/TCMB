@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TCMBProject.API.Data;
 using TCMBProject.API.Repositories;
+using TCMBProject.Currency.Models;
 using TCMBProject.Currency.Services;
 
 namespace TCMBProject.API.BgService
@@ -27,9 +28,9 @@ namespace TCMBProject.API.BgService
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            if (DateTime.Now.Hour>9 && DateTime.Now.Hour<18)
+            if (DateTime.Now.Hour > 9 && DateTime.Now.Hour < 18)
             {
-               
+
                 timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromMinutes(1));
 
             }
@@ -41,9 +42,15 @@ namespace TCMBProject.API.BgService
             using var scope = _scopeFactory.CreateScope();
             var dbContext = scope.ServiceProvider.GetService<TCMBDbContext>();
 
-            var todayData = _currencyService.GetToday();
+            var todayData = CurrencyList();
             _currencyRepository.Add(dbContext, todayData);
             Console.WriteLine($"Added Currency {DateTime.Now.ToLongTimeString()}");
         }
+
+        private  List<CurrencyModel> CurrencyList()
+        {
+            return  _currencyService.GetToday();
+        }
+
     }
 }

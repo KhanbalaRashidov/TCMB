@@ -23,6 +23,6 @@ namespace TCMBProject.API
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-            
+
     }
 }

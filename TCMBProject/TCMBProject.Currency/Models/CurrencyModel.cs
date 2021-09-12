@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace TCMBProject.Currency.Models
 {
-    
+
     public class CurrencyModel
     {
         [Key]
@@ -23,6 +23,8 @@ namespace TCMBProject.Currency.Models
         public string ForexSelling { get; set; }
         public string BanknoteBuying { get; set; }
         public string BanknoteSelling { get; set; }
+       
+        public DateTime AddDate { get; set; }=DateTime.Now;
 
         public static CurrencyModel Map(Tarih_DateCurrency dateCurrency)
         {

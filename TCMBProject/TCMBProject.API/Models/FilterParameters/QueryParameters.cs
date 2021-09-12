@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TCMBProject.API.Models.Dto
+namespace TCMBProject.API.Models.FilterParameters
 {
-    public class CurrencyReturnDTO
+    public class QueryParameters:RequestParameters
     {
+      
     }
 }
