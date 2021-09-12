@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TCMBProject.API.Data;
 using TCMBProject.API.Repositories;
+using TCMBProject.API.Services;
 using TCMBProject.Currency.Models;
 using TCMBProject.Currency.Services;
 
@@ -14,15 +15,15 @@ namespace TCMBProject.API.BgService
 {
     public class TCMBAddedService : BackgroundService
     {
-        private readonly ICurrencyRepository _currencyRepository;
+        private readonly ICurrencyDataService _currencyDataService;
         private readonly ICurrencyService _currencyService;
         private readonly IServiceScopeFactory _scopeFactory;
         private Timer timer;
-        public TCMBAddedService(ICurrencyRepository currencyRepository,
-            ICurrencyService currencyService, IServiceScopeFactory scopeFactory)
+        public TCMBAddedService(ICurrencyDataService currencyDataService, IServiceScopeFactory scopeFactory,
+            ICurrencyService cuurencyService)
         {
-            _currencyRepository = currencyRepository;
-            _currencyService = currencyService;
+            _currencyService = cuurencyService;
+            _currencyDataService = currencyDataService;
             _scopeFactory = scopeFactory;
         }
 
@@ -43,13 +44,13 @@ namespace TCMBProject.API.BgService
             var dbContext = scope.ServiceProvider.GetService<TCMBDbContext>();
 
             var todayData = CurrencyList();
-            _currencyRepository.Add(dbContext, todayData);
+            _currencyService.Add(dbContext, todayData);
             Console.WriteLine($"Added Currency {DateTime.Now.ToLongTimeString()}");
         }
 
         private  List<CurrencyModel> CurrencyList()
         {
-            return  _currencyService.GetToday();
+            return  _currencyDataService.GetToday();
         }
 
     }

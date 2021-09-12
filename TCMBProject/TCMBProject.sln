@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8BFF33AF-A1C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{07ED23FD-D98F-4FBD-BC15-767756720D3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCMBProject.API", "TCMBProject.API\TCMBProject.API.csproj", "{951F1BDE-BEA8-456C-8603-24E0E7537E4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCMBProject.API", "TCMBProject.API\TCMBProject.API.csproj", "{951F1BDE-BEA8-456C-8603-24E0E7537E4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCMBProject.Currency", "TCMBProject.Currency\TCMBProject.Currency.csproj", "{4AC52FE4-17D8-4B1B-93D4-1C04D9C8E295}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCMBProject.Currency", "TCMBProject.Currency\TCMBProject.Currency.csproj", "{4AC52FE4-17D8-4B1B-93D4-1C04D9C8E295}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCMBProject.Currency.Test", "TCMBProject.Currency.Test\TCMBProject.Currency.Test.csproj", "{8509E1E9-8B85-4C08-8A38-2D57D34D9E3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCMBProject.Currency.Test", "TCMBProject.Currency.Test\TCMBProject.Currency.Test.csproj", "{8509E1E9-8B85-4C08-8A38-2D57D34D9E3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

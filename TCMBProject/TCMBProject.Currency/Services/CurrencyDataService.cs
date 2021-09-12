@@ -10,13 +10,13 @@ using RestSharp;
 
 namespace TCMBProject.Currency.Services
 {
-    public class CurrencyService : ICurrencyService
+    public class CurrencyDataService : ICurrencyDataService
     {
         private string urlPatter = "https://www.tcmb.gov.tr/kurlar/{0}.xml";
 
         private readonly ITCMBXmlSerailizer serailizer;
 
-        public CurrencyService()
+        public CurrencyDataService()
         {
             serailizer = new TCMBXmlSerializer();
         }

@@ -6,10 +6,10 @@ namespace TCMBProject.Currency.Test
 {
     public class CurrencyServiceTest
     {
-        private CurrencyService currencyService;
+        private CurrencyDataService currencyService;
         public CurrencyServiceTest()
         {
-            currencyService = new CurrencyService();
+            currencyService = new CurrencyDataService();
         }
         [Fact]
         public void Get_Today()

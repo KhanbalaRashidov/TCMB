@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 using TCMBProject.API.Models.Dto;
 using TCMBProject.API.Models.FilterParameters;
 using TCMBProject.API.Repositories;
-
+using TCMBProject.API.Services;
 
 namespace TCMBProject.API.Controllers
 {
@@ -15,15 +16,16 @@ namespace TCMBProject.API.Controllers
     [ApiController]
     public class CurrencyController : ControllerBase
     {
-        private ICurrencyRepository _currencyRepository;
-        public CurrencyController(ICurrencyRepository currencyRepository)
+        private ICurrencyService _cuurencyService;
+        private IMapper _mapper;
+        public CurrencyController(ICurrencyService cuurencyService)
         {
-            _currencyRepository = currencyRepository;
+            _cuurencyService = cuurencyService;
         }
         [HttpGet("GetAll")]
         public IActionResult GetAll([FromQuery] QueryParameters query)
         {
-            var data = _currencyRepository.GetAll(query).Result;
+            var data = _cuurencyService.GetAll(query).Result;
             var currenyAll = data.Select(x => new CurrencyAllDto
             {
                 CurrencyCode = x.CurrencyCode,
@@ -35,12 +37,11 @@ namespace TCMBProject.API.Controllers
         [HttpGet("GetByCode")]
         public IActionResult GetByCode(string code)
         {
-            var data = _currencyRepository.GetByCuurencyCode(code).Result;
+            var data = _cuurencyService.GetByCuurencyCode(code).Result;
             if (data.Count == 0)
             {
                 return NotFound();
             }
-
             var currencyHistories = data.Select(x => new CurrencyHistoryDto
             {
                 CurrencyCode = x.CurrencyCode,

@@ -15,7 +15,9 @@ using System.Threading.Tasks;
 using TCMBProject.API.BgService;
 using TCMBProject.API.Data;
 using TCMBProject.API.Repositories;
+using TCMBProject.API.Services;
 using TCMBProject.Currency.Services;
+
 
 namespace TCMBProject.API
 {
@@ -31,7 +33,6 @@ namespace TCMBProject.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -43,6 +44,7 @@ namespace TCMBProject.API
             });
             services.AddHostedService<TCMBAddedService>();
             services.AddSingleton<ICurrencyRepository, CurrencyRepository>();
+            services.AddSingleton<ICurrencyDataService, CurrencyDataService>();
             services.AddSingleton<ICurrencyService, CurrencyService>();
         }
 

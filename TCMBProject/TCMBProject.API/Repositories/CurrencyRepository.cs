@@ -29,42 +29,14 @@ namespace TCMBProject.API.Repositories
             dbContext.SaveChanges();
         }
 
-        public async Task<List<CurrencyModel>> GetAll(QueryParameters query)
+        public  Task<List<CurrencyModel>> GetAll()
         {
-
-            var data = await _dbContext.Set<CurrencyModel>().ToListAsync();
-            if (query.Name != null)
-            {
-                data = data.Where(x => x.Name == query.Name).ToList();
-            }
-            if (query.Code != null)
-            {
-                data = data.Where(x => x.CurrencyCode == query.Code).ToList();
-            }
-
-            switch (query.SortedBy)
-            {
-                case "code_desc":
-                    data = data.OrderByDescending(x => x.CurrencyCode).ToList();
-                    break;
-                case "rate":
-                    data = data.OrderBy(x => x.CrossRateUsd).ToList();
-                    break;
-
-                case "rate_desc":
-                    data = data.OrderByDescending(x => x.CrossRateUsd).ToList();
-                    break;
-                default:
-                    data = data.OrderBy(x => x.CurrencyCode).ToList();
-                    break;
-            }
-           return data.ToList();
+           return  _dbContext.Set<CurrencyModel>().ToListAsync();
         }
 
-        public async Task<List<CurrencyModel>> GetByCuurencyCode(string code)
+        public async  Task<List<CurrencyModel>> GetByCuurencyCode(string code)
         {
-            var data = await _dbContext.CurrencyModels.Where(x => x.CurrencyCode == code).ToListAsync();
-            return data;
+           return await _dbContext.CurrencyModels.Where(x => x.CurrencyCode == code).ToListAsync();
         }
 
 

@@ -7,7 +7,7 @@ using TCMBProject.Currency.Models;
 
 namespace TCMBProject.Currency.Services
 {
-    public interface ICurrencyService
+    public interface ICurrencyDataService
     {
         List<CurrencyModel> GetToday();
         List<CurrencyModel> GetByDate(DateTime date);
