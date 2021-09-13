@@ -14,15 +14,11 @@ namespace TCMBProject.API.Repositories
 {
     public class CurrencyRepository : ICurrencyRepository
     {
-
         private TCMBDbContext _dbContext;
-
         public CurrencyRepository(IServiceProvider serviceProvider)
         {
-
             _dbContext = serviceProvider.CreateScope().ServiceProvider.GetRequiredService<TCMBDbContext>();
         }
-
         public void Add(TCMBDbContext dbContext, List<CurrencyModel> currencies)
         {
             dbContext.CurrencyModels.AddRange(currencies);

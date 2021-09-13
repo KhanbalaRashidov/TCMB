@@ -10,8 +10,8 @@ using TCMBProject.API.Data;
 namespace TCMBProject.API.Migrations
 {
     [DbContext(typeof(TCMBDbContext))]
-    [Migration("20210910172819_initialCreate")]
-    partial class initialCreate
+    [Migration("20210913111651_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

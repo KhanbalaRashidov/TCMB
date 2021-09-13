@@ -30,7 +30,7 @@ namespace TCMBProject.API.Controllers
                 Name = x.Name,
                 CrossRateUsd = x.CrossRateUsd,
             }).ToList();
-            return Ok(currenyAll);
+            return Ok(new { count = currenyAll.Count, currencyAll=currenyAll.ToList()});
         }
         [HttpGet("GetByCode")]
         public IActionResult GetByCode(string code)
@@ -46,7 +46,7 @@ namespace TCMBProject.API.Controllers
                 AddedDate = x.AddDate,
                 CrossRateUsd = x.CrossRateUsd,
             }).ToList();
-            return Ok(currencyHistories);
+            return Ok(new { count = currencyHistories.Count, currencyHistories = currencyHistories });
         }
     }
 }
