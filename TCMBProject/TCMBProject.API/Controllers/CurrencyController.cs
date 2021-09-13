@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -17,7 +16,6 @@ namespace TCMBProject.API.Controllers
     public class CurrencyController : ControllerBase
     {
         private ICurrencyService _cuurencyService;
-        private IMapper _mapper;
         public CurrencyController(ICurrencyService cuurencyService)
         {
             _cuurencyService = cuurencyService;

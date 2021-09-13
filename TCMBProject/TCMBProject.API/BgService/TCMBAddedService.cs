@@ -32,7 +32,7 @@ namespace TCMBProject.API.BgService
             if (DateTime.Now.Hour > 9 && DateTime.Now.Hour < 18)
             {
 
-                timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromMinutes(1));
+                timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromHours(1));
 
             }
             return Task.CompletedTask;

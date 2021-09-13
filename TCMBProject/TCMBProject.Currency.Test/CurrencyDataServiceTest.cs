@@ -4,10 +4,10 @@ using Xunit;
 
 namespace TCMBProject.Currency.Test
 {
-    public class CurrencyServiceTest
+    public class CurrencyDataServiceTest
     {
         private CurrencyDataService currencyService;
-        public CurrencyServiceTest()
+        public CurrencyDataServiceTest()
         {
             currencyService = new CurrencyDataService();
         }

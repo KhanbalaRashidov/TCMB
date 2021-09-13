@@ -1,4 +1,4 @@
-﻿using System;
+﻿  using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -49,7 +49,7 @@ namespace TCMBProject.API.Services
                     data = data.OrderBy(x => x.CurrencyCode).ToList();
                     break;
             }
-            return data.ToList();
+            return  data.ToList();
         }
 
         public async Task<List<CurrencyModel>> GetByCuurencyCode(string code)

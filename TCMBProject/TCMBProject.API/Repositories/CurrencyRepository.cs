@@ -29,9 +29,9 @@ namespace TCMBProject.API.Repositories
             dbContext.SaveChanges();
         }
 
-        public  Task<List<CurrencyModel>> GetAll()
+        public async Task<List<CurrencyModel>> GetAll()
         {
-           return  _dbContext.Set<CurrencyModel>().ToListAsync();
+           return await _dbContext.Set<CurrencyModel>().ToListAsync();
         }
 
         public async  Task<List<CurrencyModel>> GetByCuurencyCode(string code)
